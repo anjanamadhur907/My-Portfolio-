@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Copy, Check, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -33,13 +34,32 @@ export default function Contact() {
       return;
     }
     setIsSubmitting(true);
-    // Simulate API delivery
-    setTimeout(() => {
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject || 'No Subject',
+      message: formData.message,
+    };
+
+    emailjs.send(
+      'service_valta0j',
+      'template_v6d8ww4',
+      templateParams,
+      'T8fzZoLrY5AGNo4pA'
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
       setIsSubmitting(false);
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    })
+    .catch((err) => {
+      console.error('FAILED...', err);
+      alert('Failed to send message. Please check your network or try again.');
+      setIsSubmitting(false);
+    });
   };
 
   const styles = {
