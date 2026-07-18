@@ -129,12 +129,12 @@ export default function Projects() {
     },
     cardDesc: {
       fontSize: '0.9rem',
-      color: 'var(--text-secondary)',
+      color: 'var(--text-primary)',
       lineHeight: '1.6',
     },
     bullets: {
       fontSize: '0.82rem',
-      color: 'var(--text-muted)',
+      color: 'var(--text-secondary)',
       paddingLeft: '1.2rem',
       display: 'flex',
       flexDirection: 'column',
@@ -202,7 +202,7 @@ export default function Projects() {
 
                 <div>
                   <h3 style={styles.cardTitle}>{project.title}</h3>
-                  <p style={{ ...styles.cardDesc, marginTop: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                  <p style={{ ...styles.cardDesc, marginTop: '0.5rem', fontSize: '0.9rem', color: 'var(--text-primary)' }}>
                     {project.desc}
                   </p>
                 </div>
