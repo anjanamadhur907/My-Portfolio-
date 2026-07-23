@@ -33,7 +33,8 @@ export default function Projects() {
       icon: <ShieldCheck size={28} />,
       accent: 'var(--accent-cyan)',
       glow: 'var(--glow-cyan)',
-      github: 'https://github.com/anjanamadhur907'
+      github: 'https://github.com/anjanamadhur907',
+      live: 'https://ai-resume-analyser-project-1.onrender.com'
     },
     {
       title: 'Python Full Stack E-Commerce System',
@@ -231,10 +232,12 @@ export default function Projects() {
                     <span>Codebase</span>
                   </a>
                   <a
-                    href="#"
+                    href={project.live || '#'}
+                    target={project.live ? "_blank" : undefined}
+                    rel={project.live ? "noopener noreferrer" : undefined}
                     style={styles.linkBtn}
                     className="project-link-btn"
-                    onClick={(e) => {
+                    onClick={project.live ? undefined : (e) => {
                       e.preventDefault();
                       alert(`Demonstration view of "${project.title}" will open locally. Code is available on GitHub.`);
                     }}
